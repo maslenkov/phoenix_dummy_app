@@ -33,8 +33,10 @@ defmodule HelloPhoenix.ConnCase do
   end
 
   setup tags do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(HelloPhoenix.Repo)
+
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(HelloPhoenix.Repo, [])
+      Ecto.Adapters.SQL.Sandbox.mode(HelloPhoenix.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.conn()}

@@ -3,7 +3,7 @@ defmodule HelloPhoenix.UserTest do
 
   alias HelloPhoenix.User
 
-  @valid_attrs %{name: "some content", tags: "some content"}
+  @valid_attrs %{name: "some content", tags: [%{values: ["a", "b"]}]}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

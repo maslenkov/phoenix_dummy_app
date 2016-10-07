@@ -3,7 +3,7 @@ defmodule HelloPhoenix.User do
 
   schema "users" do
     field :name, :string
-    field :tags, HelloPhoenix.Tags
+    embeds_many :tags, HelloPhoenix.Tags
 
     timestamps()
   end
